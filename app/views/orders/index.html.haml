@@ -1,0 +1,14 @@
+%h4 Previous Orders
+
+= render 'new'
+
+%table
+  %thead
+    %th food
+    %th date
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td= order.description
+        %td= order.created_at
+
