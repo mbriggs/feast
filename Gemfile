@@ -10,6 +10,7 @@ gem 'devise'
 gem 'oa-openid', :require => 'omniauth/openid'
 gem 'mongoid'
 gem 'bson_ext'
+gem 'therubyracer-heroku'
 
 group  :development do
   gem 'unicorn'
