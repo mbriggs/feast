@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/nmerouze/machinist_mongo.git
+  revision: fa4819c4e1233a4e3ce527b68af8aeee85dfc6c3
+  branch: machinist2
+  specs:
+    machinist_mongo (2.0.0.beta.1)
+      machinist (~> 2.0.0.beta2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -71,6 +79,7 @@ GEM
     kgio (2.6.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
+    machinist (2.0.0.beta2)
     mail (2.3.0)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -182,6 +191,8 @@ DEPENDENCIES
   haml
   heroku
   jquery-rails
+  machinist (>= 2.0.0.beta2)
+  machinist_mongo!
   mongoid
   oa-openid
   rails (= 3.1.0.rc5)

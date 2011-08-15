@@ -15,6 +15,10 @@ class User
     where(:email => email).first or create(:email => email, :password => 'foobar')
   end
 
+  def self.orderers
+    all(conditions: { "orders.created_at" => { "$gte" => last_friday.to_time }})
+  end
+
   def order(food)
     if already_ordered?
       Order.errored("You cannot place another order this week")
@@ -23,12 +27,11 @@ class User
     end
   end
 
-  private
-
   def already_ordered?
     not orders
-      .where(:created_at.gt => Chronic.parse('last friday').to_date)
+      .where(:created_at.gt => last_friday)
       .first
       .nil?
   end
+
 end
