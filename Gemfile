@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0.rc5'
 gem 'sqlite3'
+gem 'chronic'
 gem 'jquery-rails'
 gem 'haml'
 gem 'heroku'
@@ -17,6 +18,7 @@ end
 
 group :test do
   gem 'rspec-rails'
+  gem 'database_cleaner'
 end
 
 group :assets do
