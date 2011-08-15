@@ -54,7 +54,33 @@ describe User do
     end
   end
 
-  context "#non_orderers"
+  context "#non_orderers" do
+    it "lists users who have not ordered" do
+      users = User.make! 2
+
+      non_orderers = User.non_orderers
+
+      non_orderers.length.should == 2
+      users.each do |user|
+        non_orderers.include?(user).should be_true
+      end
+    end
+
+    it "does not include users who have ordered" do
+      included = nil
+      Timecop.travel 1.weeks.ago do
+        included = User.make!.order('Beef Burger' => 10)
+      end
+
+      excluded = User.make!
+      excluded.order("Beef Burger" => 10)
+
+      non_orderers = User.non_orderers
+
+      non_orderers.include?(excluded).should be_false
+      non_orderers.include?(included).should be_true
+    end
+  end
 
   context "creating an order" do
     before(:each) do

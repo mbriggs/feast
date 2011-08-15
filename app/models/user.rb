@@ -19,6 +19,10 @@ class User
     all(conditions: { "orders.created_at" => { "$gte" => last_friday.to_time }})
   end
 
+  def self.non_orderers
+    all(conditions: { "orders.created_at" => { "$not" => { "$gte" => last_friday.to_time }}})
+  end
+
   def order(food)
     if already_ordered?
       Order.errored("You cannot place another order this week")
