@@ -11,6 +11,7 @@ gem 'oa-openid', :require => 'omniauth/openid'
 gem 'mongoid'
 gem 'bson_ext'
 gem 'therubyracer-heroku'
+gem 'activerecord-postgresql-adapter'
 
 group  :development do
   gem 'unicorn'
