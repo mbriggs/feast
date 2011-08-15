@@ -8,7 +8,7 @@ class User
     :registerable,
     :validatable
 
-  has_many :orders
+  embeds_many :orders
 
   def self.find_or_create_by_token(token)
     email = token['user_info']['email']
@@ -17,7 +17,7 @@ class User
 
   def order(food)
     if already_ordered?
-      # Order.errored("")
+      Order.errored("You cannot place another order this week")
     else
       orders.create! food
     end
@@ -26,9 +26,6 @@ class User
   private
 
   def already_ordered?
-    pp orders
-      .where(:created_at.gt => Chronic.parse('last friday').to_date)
-      .first
     not orders
       .where(:created_at.gt => Chronic.parse('last friday').to_date)
       .first

@@ -49,10 +49,17 @@ describe User do
       @user.order("Beef Burger" => 5)
       order = @user.order("Beef Burger" => 5)
 
-      order.errors.empty?.should be_true
-      Order.all.count.should == 1
+      order.errors.empty?.should be_false
+      @user.orders.count.should == 1
     end
 
-    it "can happen again next week"
+    it "can happen again next week" do
+      @user.order("Beef Burger" => 5)
+      Timecop.travel 1.week.from_now do
+        @user.order("Beef Burger" => 5)
+      end
+
+      @user.orders.count.should == 2
+    end
   end
 end
