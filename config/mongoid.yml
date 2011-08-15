@@ -8,7 +8,7 @@ test:
 
 # set these environment variables on your prod server
 production:
-  uri: uri: <%= ENV['MONGOLAB_URI'] %>
+  uri: <%= ENV['MONGOLAB_URI'] %>
   # host: dbh35.mongolab.com
   # port: 27357
   # username: heroku_app747466
