@@ -8,10 +8,11 @@ test:
 
 # set these environment variables on your prod server
 production:
-  host: dbh35.mongolab.com
-  port: 27357
-  username: heroku_app747466
-  password: om3nn1hemldclrasijtkjeib1
+  uri: uri: <%= ENV['MONGOLAB_URI'] %>
+  # host: dbh35.mongolab.com
+  # port: 27357
+  # username: heroku_app747466
+  # password: om3nn1hemldclrasijtkjeib1
   database: feast
   # port: <%= ENV['MONGOID_PORT'] %>
   # slaves:
