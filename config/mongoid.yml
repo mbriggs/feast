@@ -11,8 +11,8 @@ production:
   host: <%= ENV['MONGOLAB_URI'] %>
   username: heroku_app747466
   password: om3nn1hemldclrasijtkjeib1
+  database: feast
   # port: <%= ENV['MONGOID_PORT'] %>
-  # database: <%= ENV['MONGOID_DATABASE'] %>
   # slaves:
   #   - host: slave1.local
   #     port: 27018
