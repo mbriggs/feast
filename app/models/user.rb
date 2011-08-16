@@ -10,17 +10,19 @@ class User
 
   embeds_many :orders
 
-  def self.find_or_create_by_token(token)
-    email = token['user_info']['email']
-    where(:email => email).first or create(:email => email, :password => 'foobar')
-  end
+  class << self
+    def find_or_create_by_token(token)
+      email = token['user_info']['email']
+      where(:email => email).first or create(:email => email, :password => 'foobar')
+    end
 
-  def self.orderers
-    all(conditions: { "orders.created_at" => { "$gte" => last_friday.to_time }})
-  end
+    def orderers
+      all(conditions: { "orders.created_at" => { "$gte" => last_friday.to_time }})
+    end
 
-  def self.non_orderers
-    all(conditions: { "orders.created_at" => { "$not" => { "$gte" => last_friday.to_time }}})
+    def non_orderers
+      all(conditions: { "orders.created_at" => { "$not" => { "$gte" => last_friday.to_time }}})
+    end
   end
 
   def order(food)
@@ -32,10 +34,12 @@ class User
   end
 
   def already_ordered?
-    not orders
+    found = orders
       .where(:created_at.gt => last_friday)
       .first
       .nil?
+
+    not found
   end
 
 end

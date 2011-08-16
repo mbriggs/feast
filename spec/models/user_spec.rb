@@ -69,7 +69,8 @@ describe User do
     it "does not include users who have ordered" do
       included = nil
       Timecop.travel 1.weeks.ago do
-        included = User.make!.order('Beef Burger' => 10)
+        included = User.make!
+        included.order('Beef Burger' => 10)
       end
 
       excluded = User.make!
