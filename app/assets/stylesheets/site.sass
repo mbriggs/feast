@@ -1,0 +1,72 @@
+@import 'bourbon'
+
+body,html
+  :height 100%
+  :margin 0
+  :padding 0
+  :font-family veggieburger
+  :font-size 1.1em
+  :line-height 1.55em
+
+form
+  :margin-left 30px
+
+  textarea
+    :width 515px
+    :height 120px
+
+  fieldset
+    :border 0px
+    :margin-top 30px
+
+    legend
+      :font-size 1.2em
+
+input
+  :border 1px solid #5e2416
+
+input[type=submit],input[type=button],button
+  @include button(shiny, lighten(#5e2416, 10%))
+
+img
+  @include box-shadow(0px 0px 4px #AAA)
+  :border-bottom 2px solid #5e2416
+
+#content
+  @include border-radius(10px)
+  @include linear-gradient(white, #ffe9e5)
+  :margin auto
+  :padding 20px
+  // :background-color hsl(0,0,95%)
+  :border 3px dashed #5e2416
+  :width 90%
+  :max-width 950px
+  :min-height 600px
+
+  h1
+    :font-family june-bug
+    :text-align center
+    :margin-bottom 80px
+    :font-size 2em
+
+  nav
+    :font-family veggieburger
+    :margin-top 25px
+    :font-size 0.5em
+    :font-weight normal
+
+    a
+      :text-decoration none
+
+      &:hover
+        :color lighten(#00E, 10%)
+
+  h4
+    :font-size 1.6em
+    :color #222
+    :margin-top 40px
+
+.secondary-info
+  :color #444
+  :font-size 0.7em
+  :line-height 1.05em

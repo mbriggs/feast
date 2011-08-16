@@ -1,3 +1,58 @@
 = form_for(@order) do |f|
+  - f.extend ApplicationHelper
+
   = render :partial => 'errors'
 
+  %fieldset
+    %legend For this weeks BBQ, I would like...
+
+    = food 1, "Beef Burger"
+    = food 2, "Beef Burger"
+    = food 1, "Halaal Burger"
+    = food 2, "Halaal Burger"
+    = food 1, "Veggie Burger"
+    = food 2, "Veggie Burger"
+    = food 1, "Salmon Burger"
+    = food 2, "Salmon Burger"
+
+    %input#choose-other-food(type='checkbox' name='choose-other-food' value="true")
+    %label(for="choose-other-food") Other
+    %input(type="text" name="other-food")
+
+
+  %fieldset
+    %legend
+      Grocery stuff for everybody to share
+      .secondary-info
+        (ex. freezies, popsicles etc.) - Funded by Nulogy pending approval (before purchase)
+
+    %textarea(name="Special Order")
+  
+  %fieldset
+    %legend
+      Beverage Requests
+      .secondary-info
+        (non-alcoholic)
+
+    = food "Coke"
+    = food "Sprite / 7Up"
+    = food "Pepsi"
+    = food "Root Beer"
+    = food "Fruit Juice"
+    = food "Orange Juice"
+    = food "Diet Pepsi"
+    = food "Diet Coke"
+
+  %fieldset
+    %legend
+      Beverage Requests
+      .secondary-info
+        (alcoholic =&gt; handled by Dave)
+
+    = food "Beer"
+    %input#choose-other-alcohol(type='checkbox' name='choose-other-alcohol' value="true")
+    %label(for="choose-other-alcohol") Other
+    %input(type="text" name="other-alcohol")
+
+  %fieldset
+    %input(type="submit" value="Place Order!")

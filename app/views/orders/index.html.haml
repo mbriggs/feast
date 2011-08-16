@@ -1,14 +1,19 @@
-%h4 Previous Orders
+%h1
+  Nulogy Bar-b-que
+  %nav
+    %a(href='/orderers') Orderers
+    \-
+    %a(href='/non-orderers') Non Orderers
+    \-
+    %a(href='/order') This Weeks Order
 
 = render 'new'
 
-%table
-  %thead
-    %th food
-    %th date
-  %tbody
+- unless @orders.empty?
+  %h4 Previous Orders
+  %ul
     - @orders.each do |order|
-      %tr
-        %td= order.description
-        %td= order.created_at
+      %li
+        order.description
+        %span order.created_at
 
