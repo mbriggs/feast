@@ -14,6 +14,5 @@
   %ul
     - @orders.each do |order|
       %li
-        order.description
-        %span order.created_at
-
+        = order.description
+        %span= order.created_at
