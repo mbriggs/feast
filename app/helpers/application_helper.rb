@@ -14,9 +14,9 @@ private
   def checkbox(args)
     id, value, title = destructure_check_args(args)
 
-    id ||= title.camelize.downcase.dasherize
+    id ||= title.parameterize
     label = content_tag :label, title, for: id
-    checkbox = "<input id='#{id}' type='checkbox' value='#{value}'/>"
+    checkbox = "<input id='#{id}' name='food[#{id}]' type='checkbox' value='#{value}'/>"
 
     "#{checkbox}\n#{label}<br/>".html_safe
   end

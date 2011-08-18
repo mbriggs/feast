@@ -7,9 +7,9 @@ class OrdersController < ApplicationController
   end
 
   def create
-    food = params.dup
-    food.delete('other-food') unless food.delete('choose-other-food')
-    food.delete('other-alcohol') unless food.delete('choose-other-alcohol')
+    food = params[:food].dup
+    food.delete('other-food') unless params['choose-other-food']
+    food.delete('other-alcohol') unless params['choose-other-alcohol']
 
     @order = current_user.order(food)
     @orders = current_user.orders

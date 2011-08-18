@@ -15,7 +15,7 @@
 
     %input#choose-other-food(type='checkbox' name='choose-other-food' value="true")
     %label(for="choose-other-food") Other
-    %input(type="text" name="other-food")
+    %input(type="text" name="food[other-food]")
 
 
   %fieldset
@@ -24,7 +24,7 @@
       .secondary-info
         (ex. freezies, popsicles etc.) - Funded by Nulogy pending approval (before purchase)
 
-    %textarea(name="Special Order")
+    %textarea(name="food[Special Order]")
 
   %fieldset
     %legend
@@ -50,7 +50,7 @@
     = food "Beer"
     %input#choose-other-alcohol(type='checkbox' name='choose-other-alcohol' value="true")
     %label(for="choose-other-alcohol") Other
-    %input(type="text" name="other-alcohol")
+    %input(type="text" name="food[other-alcohol]")
 
   %fieldset
     %input(type="submit" value="Place Order!")
