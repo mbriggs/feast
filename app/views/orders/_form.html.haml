@@ -4,18 +4,18 @@
   %fieldset
     %legend For this weeks BBQ, I would like...
 
-    = food 1, "Beef Burger"
-    = food 2, "Beef Burger"
-    = food 1, "Halaal Burger"
-    = food 2, "Halaal Burger"
-    = food 1, "Veggie Burger"
-    = food 2, "Veggie Burger"
-    = food 1, "Salmon Burger"
-    = food 2, "Salmon Burger"
+    = f.food 1, "Beef Burger"
+    = f.food 2, "Beef Burger"
+    = f.food 1, "Halaal Burger"
+    = f.food 2, "Halaal Burger"
+    = f.food 1, "Veggie Burger"
+    = f.food 2, "Veggie Burger"
+    = f.food 1, "Salmon Burger"
+    = f.food 2, "Salmon Burger"
 
     %input#choose-other-food(type='checkbox' name='choose-other-food' value="true")
     %label(for="choose-other-food") Other
-    %input(type="text" name="food[other-food]")
+    = f.text_field 'Other Food'
 
 
   %fieldset
@@ -24,7 +24,7 @@
       .secondary-info
         (ex. freezies, popsicles etc.) - Funded by Nulogy pending approval (before purchase)
 
-    %textarea(name="food[Special Order]")
+    = f.text_field "Special Order"
 
   %fieldset
     %legend
@@ -32,14 +32,14 @@
       .secondary-info
         (non-alcoholic)
 
-    = food "Coke"
-    = food "Sprite / 7Up"
-    = food "Pepsi"
-    = food "Root Beer"
-    = food "Fruit Juice"
-    = food "Orange Juice"
-    = food "Diet Pepsi"
-    = food "Diet Coke"
+    = f.food "Coke"
+    = f.food "Sprite / 7Up"
+    = f.food "Pepsi"
+    = f.food "Root Beer"
+    = f.food "Fruit Juice"
+    = f.food "Orange Juice"
+    = f.food "Diet Pepsi"
+    = f.food "Diet Coke"
 
   %fieldset
     %legend
@@ -47,10 +47,10 @@
       .secondary-info
         (alcoholic =&gt; handled by Dave)
 
-    = food "Beer"
+    = f.food "Beer"
     %input#choose-other-alcohol(type='checkbox' name='choose-other-alcohol' value="true")
     %label(for="choose-other-alcohol") Other
-    %input(type="text" name="food[other-alcohol]")
+    = f.text_field "Other Alcohol"
 
   %fieldset
     %input(type="submit" value="Place Order!")

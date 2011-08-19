@@ -9,10 +9,10 @@
 
 = render 'new'
 
-- unless @orders.empty?
+- unless @previous_orders.empty?
   %h4 Previous Orders
   %ul
-    - @orders.each do |order|
+    - @previous_orders.each do |order|
       %li
         = order.description
         %span= order.created_at
