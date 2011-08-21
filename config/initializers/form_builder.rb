@@ -2,8 +2,13 @@ module ActionView
   module Helpers
     class FormBuilder
       def food(quantity=nil, name)
-        quantity ||= 1
-        title = @template.pluralize(quantity, name)
+        if quantity
+          title = @template.pluralize(quantity, name)
+        else
+          quantity = 1
+          title = name
+        end
+
         id = title.parameterize
 
         [ @template.check_box(@object_name, name, {id: id}, quantity, 0),

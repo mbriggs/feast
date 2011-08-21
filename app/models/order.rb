@@ -14,15 +14,18 @@ class Order
   end
 
   def description
+    #copy/paste from rails
     pluralize = lambda do |count, singular, plural = nil|
       "#{count || 0} " + ((count == 1 || count =~ /^1(\.0+)?$/) ? singular : (plural || singular.pluralize))
     end
 
     attributes.keys
-      .reject {|field| field == "_id"}
+      .reject {|field| ["_id", "updated_at", "created_at"].include? field }
+      .reject {|field| read_attribute(field) == 0 }
       .each_with_object([]) {|field, desc|
         desc << pluralize.call(attributes[field], field)
       }
       .join(', ')
   end
+
 end

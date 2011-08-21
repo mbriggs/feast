@@ -7,10 +7,12 @@ class OrdersController < ApplicationController
 
   def create
     food = params[:order].dup
-    food.values.map(&:to_i)
-
     prune! food, 'Other Food'
     prune! food, 'Other Alcohol'
+
+    food.each do |item, quantity|
+      food[item] = quantity.to_i
+    end
 
     @order = current_user.order(food)
 
@@ -27,9 +29,5 @@ private
 
     food.delete(name) unless food[enabler_id]
     food.delete(enabler_id)
-
-    food.each do |item, quantity|
-      food.delete(item) if quantity == 0
-    end
   end
 end

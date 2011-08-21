@@ -14,7 +14,9 @@ gem 'therubyracer-heroku'
 gem 'pg'
 
 group  :development do
-  gem 'unicorn'
+  gem 'passenger'
+  gem 'bond'
+  gem 'ap'
   gem 'annotate'
 end
 

@@ -34,12 +34,10 @@ class User
   end
 
   def already_ordered?
-    found = orders
-      .where(:created_at.gt => last_friday)
-      .first
-      .nil?
-
-    not found
+    not current_order.nil?
   end
 
+  def current_order
+    orders.where(:created_at.gt => last_friday).first
+  end
 end
