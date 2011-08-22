@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_filter :authenticate_user!, :load_orders
 
   def index
-    @order = Order.new
+    load_order
   end
 
   def create
@@ -20,8 +20,13 @@ class OrdersController < ApplicationController
   end
 
 private
+
   def load_orders
-    @previous_orders = current_user.orders
+    @previous_orders = current_user.previous_orders
+  end
+
+  def load_order
+    @order = current_user.already_ordered?  ? current_user.current_order : Order.new
   end
 
   def prune!(food, name)

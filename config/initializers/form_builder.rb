@@ -11,7 +11,7 @@ module ActionView
 
         id = title.parameterize
 
-        [ @template.check_box(@object_name, name, {id: id}, quantity, 0),
+        [ @template.check_box(@object_name, name, {id: id, checked: false}, quantity, 0),
           label(name, title, {for: id}),
           "<br/>" ].join("\n").html_safe
       end
