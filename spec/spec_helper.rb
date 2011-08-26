@@ -8,6 +8,17 @@ Spork.prefork do
 
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+  # patch for colors in testerical
+  module RSpec
+    module Core
+      class Configuration
+        def output_to_tty?
+          true
+        end
+      end
+    end
+  end
+
   RSpec.configure do |config|
     config.mock_with :rspec
     config.before(:each) do
